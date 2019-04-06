@@ -83,8 +83,8 @@ func (s *Socket) Send(name string, msgs ...interface{}) error {
 	return nil
 }
 
-// close closes the websocket connection
-func (s *Socket) close() { s.conn.Close() }
+// Close closes the websocket connection.
+func (s *Socket) Close() { s.conn.Close() }
 
 // readMessage reads the next message off of the connection, returning the type
 // and data decoded from the message

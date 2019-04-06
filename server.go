@@ -78,7 +78,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s.sockets.Store(so.id, so)    // Store the new socket reference
-	defer so.close()              // Defer close the connection
+	defer so.Close()              // Defer close the connection
 	defer s.sockets.Delete(so.id) // Defer un-register the connection
 
 	// Trigger a connected listener if one is defined
