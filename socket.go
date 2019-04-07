@@ -88,6 +88,8 @@ func (s *Socket) close() { s.conn.Close() }
 
 // SendClose sends a close message to the client.
 func (s *Socket) Close() error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
 	return s.conn.WriteMessage(
 		websocket.CloseMessage,
 		websocket.FormatCloseMessage(websocket.CloseNormalClosure, ""),
